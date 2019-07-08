@@ -1,0 +1,65 @@
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="app">
+  <h1>デバッグメニュー</h1>
+  <div style="margin-bottom: 16px;">
+    <label>
+      Scheme: 
+      <select name="scheme" v-model="selectedScheme">
+        <option v-for="s in schemes" :key="s":value="s">{{s}}</option>
+      </select>
+    </label>
+  </div>
+  <div style="margin-bottom: 16px;">
+    <label>
+      ContentPath: 
+      <select name="contant-path" v-model="selectedPath">
+        <option v-for="p in contentPath" :key="p" :value="p">{{p}}</option>
+      </select>
+    </label>
+  </div>
+  <div style="margin-bottom: 16px;">
+    <label>
+    {{selectedScheme}}:/
+      <input type='text' v-model="selectedPath" style="width: 300px;">
+    </label>
+    <br>
+  </div>
+  <a href="link" if-show="showLink">Link: {{ getLink }}</a>
+</div>
+<script>
+new Vue({
+  el: "#app",
+  data: {
+  	selected: {
+    	scheme: '',
+      path: ''
+    },
+  	schemes: [
+    'com-peaceteclab-alice-staging',
+    'com-peaceteclab-alice'
+    ],
+  	selectedScheme: 'com-peaceteclab-alice-staging',
+    selectedPath: '/mypage/top',
+    contentPath: [
+    '/mypage/top',
+    '/product/info?productId=',
+    '/matching/exhibit?productId=',
+    '/matching/request?matchingId=&days='
+    ],
+    link: ''
+  },
+  methods: {
+    selectScheme: function(val) {
+    	selected.scheme = val
+    }
+  },
+  computed: {
+  	getLink: function() {
+    	return this.selectedScheme + ':/' + this.selectedPath;
+    }
+  }
+})
+</script>
+</body>
+
