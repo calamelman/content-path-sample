@@ -3,6 +3,6 @@
     "minVersionCode": 0
   },
   "com.peaceteclab.alice": {
-    "minVersionCode": 21
+    "minVersionName": "1.4.0"
   }
 }
